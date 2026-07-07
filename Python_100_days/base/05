@@ -1,0 +1,64 @@
+#分支结构 if elif else
+height = float(input("请输入身高："))
+weight = float(input("请输入体重："))
+BMI = weight / (height/100) **2
+print(f"BMI = {BMI  :.1f}")
+if 18.5 <= BMI <= 24:
+    print("你的身材很棒！")
+elif BMI < 18.5:
+    print("你有点瘦")
+elif BMI > 24:
+    print("你有点胖")
+#Python使用缩进的方式来表示代码的层次结构
+#若干行连续的语句如果保持了相同的缩进，那么它们就属于同一个代码块，相当于是一个执行的整体
+
+#分支结构match-case
+status_code = int(input("响应状态码："))
+match status_code:
+    case 400: description = 'Bad Request'
+    case 401: description = 'Unauthorized'
+    case 403: description = 'Forbidden'
+    case 404: description = 'Not Found'
+    case 405: description = 'Method Not Allowed'
+    case 418: description = 'I am a teapot'
+    case 429: description = 'Too many requests'
+    case _: description = 'Unknown Status Code'
+print('状态码描述：', description)
+# 带有_的case语句在代码中起到通配符的作用，如果前面的分支都没有匹配上，代码就会来到case _。
+# case _的是可选的，并非每种分支结构都要给出通配符选项。
+# 如果分支中出现了case _，它只能放在分支结构的最后面，如果它的后面还有其他的分支，那么这些分支将是不可达的。
+#match-case合并模式
+status_code = int(input('响应状态码: '))
+match status_code:
+    case 400 | 405: description = 'Invalid Request'
+    case 401 | 403 | 404: description = 'Not Allowed'
+    case 418: description = 'I am a teapot'
+    case 429: description = 'Too many requests'
+    case _: description = 'Unknown Status Code'
+print('状态码描述:', description)
+
+#例1 分段函数求值
+x = float(input('请输入x的值：'))
+if x < -1:
+    y = 5 * x + 3
+elif -1 <= x <= 1:
+    y = x + 2
+else:
+    y = 3 * x - 5
+print('y = ', y)
+
+#例2 百分制成绩转换成等级
+score = float(input('请输入成绩：'))
+if score >= 90:
+    grade = 'A'
+elif score >= 80:
+    grade = 'B'
+elif score >= 70:
+    grade = 'C'
+elif score >= 60:
+    grade = 'D'
+else:
+    grade = 'E'
+print(f'{grade = }')
+
+#例3 计算三角形的周长和面积
